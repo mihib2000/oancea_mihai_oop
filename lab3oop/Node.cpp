@@ -5,3 +5,9 @@ Node::Node(int x) {
 	l = nullptr;
 	r = nullptr;
 }
+
+Node::Node() {
+	wert = 0;
+	l = nullptr;
+	r = nullptr;
+}

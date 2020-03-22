@@ -9,6 +9,7 @@ public:
 
 
 	Node(int x);
+	Node();
 
 
 
