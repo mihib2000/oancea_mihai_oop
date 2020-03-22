@@ -36,7 +36,7 @@ int main() {
 	
 	
 	
-	//cout << n.wert << ' ' << n.l;
+	cout << "test pentru git";
 
 
 }
