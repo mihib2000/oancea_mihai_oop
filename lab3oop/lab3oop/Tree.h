@@ -19,6 +19,6 @@ public:
 	int countNodes(Node* node);
 	int countEdges(Node* node);
 	int height(Node* node);
-	
+
 };
 
