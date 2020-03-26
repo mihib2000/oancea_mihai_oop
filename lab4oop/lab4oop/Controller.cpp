@@ -69,7 +69,7 @@ void Controller::executa(int i,MedikamentRepo repo) {
 		cout << "-Display Medikament-\n";
 		cout << "Ce sa contina numele medicamentelor? "; cin >> n;
 		for (int i = 0; i < repo.lista.size(); i++) {
-			if (repo.lista.at(i).getName().find(n)!= std::string::npos) {
+			if (repo.lista.at(i).getName().find(n)!= std::string::npos == repo.lista.at(i).getMenge>0) {
 				cout << repo.lista.at(i)<<'\n';
 			}
 		}
