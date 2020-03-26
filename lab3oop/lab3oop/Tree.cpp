@@ -23,6 +23,7 @@ void Tree::insert(int v, Node *r) {
 			insert(v, r->l);
 	else
 		if (r->r == nullptr) {
+
 			r->r = new Node();
 			r->r->wert = v;
 			r->r->l = nullptr;
