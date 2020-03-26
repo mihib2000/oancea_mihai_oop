@@ -135,7 +135,7 @@ int Tree::height(Node* node) {
 		int l_height = height(node->l);
 		int r_height = height(node->r);
 
-		
+		//return l_height > r_height ? : 
 		if (l_height > r_height)
 			return(l_height + 1);
 		else 
