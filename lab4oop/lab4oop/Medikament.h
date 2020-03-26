@@ -20,7 +20,7 @@ public:
 	void setMenge(int m);
 	float getPreis();
 	void setPreis(float p);
-	friend ostream& operator<<(std::ostream &out, const Medikament &med);
+	void print();
 
 };
 

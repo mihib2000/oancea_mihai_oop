@@ -21,7 +21,9 @@ void UserInterface::start() {
 		cout << "0. Exit" << endl;
 		cout << "Introdu Operatiunea: "; cin >> optiune; cout << endl;
 
-		c.executa(optiune, lista);
+		c.executa(optiune, &lista);
+
+
 
 	} while (optiune !=0);
 	
