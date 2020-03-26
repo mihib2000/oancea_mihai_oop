@@ -48,3 +48,10 @@ void Medikament::setPreis(float p)
 {
 	preis = p;
 }
+
+
+
+void Medikament::print() {
+	cout<<"Name: " <<name << " Konzentration: " << konzentration << " Mende: " <<menge << " Preis: " << preis<<endl;
+
+}

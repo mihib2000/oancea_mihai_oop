@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 using namespace std;
 class Medikament
 {
@@ -19,7 +20,7 @@ public:
 	void setMenge(int m);
 	float getPreis();
 	void setPreis(float p);
-
+	void print();
 
 };
 
