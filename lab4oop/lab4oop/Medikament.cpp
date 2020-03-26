@@ -48,3 +48,10 @@ void Medikament::setPreis(float p)
 {
 	preis = p;
 }
+
+ostream & operator<<(std::ostream & out, const Medikament & med)
+{
+	// TODO: insert return statement here
+	out << "Name: " << med.name << " Konzentration: " << med.konzentration << " Mende: " << med.menge << " Preis: " << med.preis;
+	return out;
+}

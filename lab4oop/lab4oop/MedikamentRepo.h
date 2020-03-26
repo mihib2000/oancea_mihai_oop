@@ -10,7 +10,7 @@ public:
 	MedikamentRepo();
 	void addMedikament(Medikament med);
 	void deleteMedikament(string n, float konz);
-	void editMedikament(string n, float konz);
+	bool exists(Medikament med);
 	void showMedikament(string str);
 
 };

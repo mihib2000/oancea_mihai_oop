@@ -18,8 +18,9 @@ void MedikamentRepo::deleteMedikament(string n, float konz) {
 	}
 }
 
-void MedikamentRepo::editMedikament(string n, float konz) {
+bool MedikamentRepo::exists(Medikament med) {
 
+	return true;
 }
 
 
