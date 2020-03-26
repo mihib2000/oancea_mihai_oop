@@ -151,7 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="lab4oop.cpp" />
+    <ClCompile Include="Medikament.cpp" />
+    <ClCompile Include="MedikamentRepo.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="Medikament.h" />
+    <ClInclude Include="MedikamentRepo.h" />
+    <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

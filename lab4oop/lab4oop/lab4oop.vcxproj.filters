@@ -18,5 +18,31 @@
     <ClCompile Include="lab4oop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Medikament.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MedikamentRepo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Medikament.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MedikamentRepo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
