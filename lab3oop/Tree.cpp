@@ -1,38 +1,43 @@
+//schimbari: am pus mai mic strict in functia de insert (ca sa pot vizualiza mai bine ceva, ca am gasit un site misto) dar numai temporar!!
 #include "Tree.h"
 #include <vector>
 #include <iostream>
+
 Tree::Tree(Node r){
 	root = r;
-
+	std::cout << " s a bagat radacina " << r.wert << '\n';
 }
 
-void Tree::insert(int v, Node *r) {
+void Tree::insert(int v, Node *r) { 
 
-	if (v <= r->wert) 
-		if (r->l == nullptr) {
-
-			r->l = new Node();
+	if (v < r->wert)					// daca valoarea nodului de inserat e mai mica decat valoarea nodului radacina
+	{									// inseamna ca nodul de inserat va fi adaugat in subarborele stang
+										// (ne raportam la subarborele curent)
+		if (r->l == nullptr) {			// daca am dat de o frunza, inseamna ca nodul de inserat va deveni copil stang al acesteia; astfel:
+			r->l = new Node();			// cream un nou nod, iar acesta devine copil stang al fostei frunze
 			r->l->wert = v;
 			r->l->l = nullptr;
-			r->l->r = nullptr;
+			r->l->r = nullptr;			// orice nod adaugat devine frunza, deci nu are copii momentan
 
-			std::cout << r->l->wert <<" a fost bagat in stanga "<<r->wert<<std::endl;
-
+			std::cout << r->l->wert << " a fost bagat in stanga lui " << r->wert << std::endl;
 		}
-		else
-			insert(v, r->l);
-	else
-		if (r->r == nullptr) {
-			r->r = new Node();
+		else							// alftel ("altfel" = nu am dat de o frunza),
+			insert(v, r->l);			// continua cautarea in subarborele stang
+	}
+	else								// daca valoarea nodului de inserat e mai mare deca valoarea nodului radacina
+	{									// inseamna ca nodul de inserat va fi adaugat in subarborele drept
+										// (ne raportam la subarborele curent)
+		if (r->r == nullptr) {			// daca am dat de o frunza, inseamna ca nodul de inserat va deveni copil drept al acesteia; astfel:
+			r->r = new Node();			// cream  un nou nod, iar acesta devine copil drep al fostei frunze
 			r->r->wert = v;
 			r->r->l = nullptr;
-			r->r->r = nullptr;
+			r->r->r = nullptr;			// orice nod adaugat devine frunza, deci nu are copii momentan
 
-			std::cout << "a bagat in dreapta";
+			std::cout << r->r->wert << " a fost bagat in dreapta lui " << r->wert << std::endl;
 		}
-		else
-			insert(v, r->r);
-	
+		else                            // altfel ("altfel" = nu am dat de o frunza),
+			insert(v, r->r);			// continua cautarea in subarborele drept
+	}
 
 }
 
@@ -43,9 +48,9 @@ Node* Tree::FindMin(Node* root)
 }
 
 Node* Tree::del(int data, Node* root) {
-	if (root == NULL) return root;
+	if (root == NULL) return root;					// daca se pointeaza catre o valoare nula, inseamna ca nu este nimic de sters, deci returnam null
 	else 
-		if (data < root->wert) 
+		if (data < root->wert)						
 			root->l = del(data, root->l);
 	else 
 			if (data > root->wert) 
@@ -82,44 +87,30 @@ std::string Tree::postorder(Node* node)
 {
 	if (node == NULL)
 		return "";
-
-	//postorder(node->l);
-
-	//postorder(node->r);
-
+	// postordine:	stanga					dreapta								radacina
 	
-	return postorder(node->l) +" "+ postorder(node->r) + " " + std::to_string(node->wert) + " ";
+	//return postorder(node->l) +" "+ postorder(node->r) + " " + std::to_string(node->wert) + " ";
+	return postorder(node->l) + postorder(node->r) + std::to_string(node->wert) + " ";
 }
 
 std::string Tree::inorder(Node* node)
 {
 	if (node == NULL)
 		return "";
-
-	//inorder(node->l);
-
-	return inorder(node->l)+ " " + std::to_string(node->wert) + " " + inorder(node->r) + " ";
-	
-
-	//inorder(node->r);
+	// inordine:	stanga							radacina					dreapta
+	return inorder(node->l) + std::to_string(node->wert) + " " + inorder(node->r);
 }
 
 std::string Tree::preorder(Node* node)
 {
 	if (node == NULL)
 		return "";
-
-	return std::to_string(node->wert) + " " + preorder(node->l) + " " + preorder(node->r)+ " ";
-
-
-	//std::cout << node->wert << " ";
-
-	//preorder(node->l);
-
-	//preorder(node->r);
+	// preordine:			radacina					stanga					dreapta
+	return std::to_string(node->wert) + " " + preorder(node->l) + preorder(node->r);
 }
 
 int Tree::countNodes(Node* node) {
+
 	if (node == NULL) {
 		return 0;
 	}
@@ -129,9 +120,10 @@ int Tree::countNodes(Node* node) {
 }
 
 int Tree::countEdges(Node* node) {
-	//std::cout << "edges";
+
 	return countNodes(node) - 1;
 }
+
 
 int Tree::height(Node* node) {
 
