@@ -9,6 +9,7 @@ public:
 
 	MedikamentRepo();
 	void addMedikament(Medikament med);
+	void deleteMedikament(string Name, float conz);
 
 };
 
