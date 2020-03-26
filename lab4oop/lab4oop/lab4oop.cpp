@@ -2,10 +2,12 @@
 //
 
 #include <iostream>
-
+#include "UserInterface.h"
 int main()
 {
-    std::cout << "Hello World!\n";
+	UserInterface ui;
+
+	ui.start();
 }
 
 

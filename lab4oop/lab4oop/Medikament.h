@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+using namespace std;
 class Medikament
 {
 private:
@@ -10,13 +12,13 @@ private:
 public:
 	Medikament(string n, float k, int m, float p);
 	string getName();
-	void setName();
+	void setName(string n);
 	float getKonzentration();
-	void setKonzentration();
+	void setKonzentration(float k);
 	int getMenge();
-	void setMenge();
+	void setMenge(int m);
 	float getPreis();
-	void setPreis();
+	void setPreis(float p);
 
 
 };
