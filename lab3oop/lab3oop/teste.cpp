@@ -1,6 +1,7 @@
 #include "Node.h"
 #include "Tree.h"
 #include <cassert>
+#include <iostream>
 void test_constructor1()
 {
 	Tree t(1);
@@ -122,6 +123,53 @@ void test_insert2()
 	assert(t.root.r->l->l->r->r->wert == 6);
 	assert(t.root.r->l->l->r->r->l == nullptr);
 	assert(t.root.r->l->l->r->r->r == nullptr);
+}
+
+void test_del1()
+{
+	// setup
+	Tree t(5);
+	t.insert(4, &t.root);
+	t.insert(6, &t.root);
+	t.insert(2, &t.root);
+	t.insert(3, &t.root);
+	t.insert(7, &t.root);
+	t.insert(8, &t.root);
+
+	// run
+	t.del(3, &t.root);
+	t.del(6, &t.root);	
+	t.del(5, &t.root);
+
+	//verify
+	assert(t.root.l->l->r == nullptr);
+	// assert(t.root.r->wert == 7); // din motive de alegere a implementarii acestei metode, pentru ca acest assert sa functioneze
+	// va fi nevoie de mutarea acestuia intre linia 142
+	assert(t.root.wert == 7);
+}
+
+void test_del2()
+{
+	// setup
+	Tree t(5);
+	t.insert(1, &t.root);
+	t.insert(9, &t.root);
+	t.insert(3, &t.root);
+	t.insert(4, &t.root);
+	t.insert(7, &t.root);
+	t.insert(8, &t.root);
+	t.insert(2, &t.root);
+	t.insert(6, &t.root);
+	t.insert(6, &t.root);
+	t.insert(6, &t.root);
+
+	// run
+	t.del(3, &t.root);
+	t.del(7, &t.root);
+
+	// verify
+	assert(t.root.l->r->wert == 4);
+	assert(t.root.r->l->wert == 8);
 }
 
 void test_FindMin1()
@@ -286,6 +334,8 @@ void testAll() {
 	test_constructor2();
 	test_insert1();
 	test_insert2();
+	test_del1();
+	test_del2();
 	test_FindMin1();
 	test_FindMin2();
 	test_countNodes1();
