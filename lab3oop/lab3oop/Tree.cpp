@@ -45,7 +45,7 @@ Node* Tree::FindMin(Node* root)
 }
 
 Node* Tree::del(int data, Node* root) {
-	if (root == NULL) return root;					// daca se pointeaza catre o valoare nula, inseamna ca nu este nimic de sters, deci returnam null
+	if (root == NULL) return root;
 	else
 		if (data < root->wert)
 			root->l = del(data, root->l);
@@ -64,17 +64,19 @@ Node* Tree::del(int data, Node* root) {
 					Node* temp = root;
 					root = root->r;
 					delete temp;
+					// nu trebuie sa ne ingrijoram de `temp` drept fiind un 'dangling pointer', pentru ca la iesirea din aceasta ramura de if, variabila oricum dispare
 				}
 				else if (root->r == NULL) {
 					Node* temp = root;
 					root = root->l;
 					delete temp;
+					// nu trebuie sa ne ingrijoram de `temp` drept fiind un 'dangling pointer', pentru ca la iesirea din aceasta ramura de if, variabila oricum dispare
 				}
 				// case 3: 2 copii
-				else {
+				else {										// cautam minimul din subarborele drept al subarborelui curent,
 					Node* temp = FindMin(root->r);
 					root->wert = temp->wert;
-					root->r = del(temp->wert, root->r);
+					root->r = del(temp->wert, root->r);		// stergem nodul din acea pozitie si il mutam in locul celui de eliminat
 				}
 			}
 	return root;
@@ -132,7 +134,6 @@ int Tree::height(Node* node) {
 		int l_height = height(node->l);
 		int r_height = height(node->r);
 
-		//return l_height > r_height ? : 
 		if (l_height > r_height)
 			return(l_height + 1);
 		else

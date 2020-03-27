@@ -170,6 +170,13 @@ void test_del2()
 	// verify
 	assert(t.root.l->r->wert == 4);
 	assert(t.root.r->l->wert == 8);
+
+	assert(t.root.r->l->l->wert == 6);
+	assert(t.root.r->l->l->r->wert == 6);
+	assert(t.root.r->l->l->r->l == nullptr);
+	assert(t.root.r->l->l->r->l == nullptr);
+	assert(t.root.r->l->l->r->r->wert == 6);
+	assert(t.root.r->l->l->r->r->l == nullptr);
 }
 
 void test_FindMin1()
