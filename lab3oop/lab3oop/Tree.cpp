@@ -5,7 +5,6 @@
 
 Tree::Tree(Node r) {
 	root = r;
-	std::cout << " s a bagat radacina " << r.wert << '\n';
 }
 
 void Tree::insert(int v, Node* r) {
@@ -19,7 +18,6 @@ void Tree::insert(int v, Node* r) {
 			r->l->l = nullptr;
 			r->l->r = nullptr;			// orice nod adaugat devine frunza, deci nu are copii momentan
 
-			std::cout << r->l->wert << " a fost bagat in stanga lui " << r->wert << std::endl;
 		}
 		else							// alftel ("altfel" = nu am dat de o frunza),
 			insert(v, r->l);			// continua cautarea in subarborele stang
@@ -33,7 +31,6 @@ void Tree::insert(int v, Node* r) {
 			r->r->l = nullptr;
 			r->r->r = nullptr;			// orice nod adaugat devine frunza, deci nu are copii momentan
 
-			std::cout << r->r->wert << " a fost bagat in dreapta lui " << r->wert << std::endl;
 		}
 		else                            // altfel ("altfel" = nu am dat de o frunza),
 			insert(v, r->r);			// continua cautarea in subarborele drept

@@ -344,4 +344,5 @@ void testAll() {
 	test_countEdges2();
 	test_height1();
 	test_height2();
+	std::cout << "All tests passed" << '\n';
 }
