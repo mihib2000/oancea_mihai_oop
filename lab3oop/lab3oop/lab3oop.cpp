@@ -1,4 +1,4 @@
-// NOTA: pentru vizualizarea mai usor a ceea ce se intampla in arbori, prin comenzile de mai jos
+// NOTA: pentru a vizualiza mai usor ceea ce se intampla in arbori, prin comenzile de mai jos
 // am folosit site-ul: https://www.cs.usfca.edu/~galles/visualization/BST.html
 #include <iostream>
 #include <string>
