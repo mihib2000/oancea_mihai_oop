@@ -16,7 +16,11 @@ int main() {
 	//t.insert(3, &t.root); 
 	//cout << t.root.wert << ' ' << t.root.l->wert << endl;
 
-	cout << t.root.wert << ' ' << t.root.l->wert << endl;
+
+
+	cout << t.root.wert << ' ' << t.root.l->wert << endl; // !! aici !!
+
+
 
 	cout << "inorder ->" << t.inorder(&t.root) << "<-\n";
 	cout << t.countNodes(&t.root) << " " << t.countEdges(&t.root) << " " << t.height(&t.root) << endl;
@@ -31,7 +35,7 @@ int main() {
 
 
 	testAll();
-
+	//test_insert1();
 
 
 
