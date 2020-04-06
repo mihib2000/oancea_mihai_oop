@@ -1,6 +1,6 @@
 #include "Medikament.h"
 
-Medikament::Medikament(string n, float k, int m, float p)
+Medikament::Medikament(string n = "-1", float k = -1.0, int m = -1, float p = -1.0)
 {
 	name = n;
 	konzentration = k;
@@ -52,6 +52,6 @@ void Medikament::setPreis(float p)
 
 
 void Medikament::print() {
-	cout<<"Name: " <<name << " Konzentration: " << konzentration << " Mende: " <<menge << " Preis: " << preis<<endl;
+	cout << "Name: " << name << " Konzentration: " << konzentration << " Menge: " << menge << " Preis: " << preis << endl;
 
 }
