@@ -115,6 +115,7 @@ void Controller::executa(int i, MedikamentRepo* repo) {
 		cout << "-Group By Price-\n";
 		cout << "-----ascendent\n";
 		repo->groupByPriceA();
+		cout << '\n';
 
 
 
@@ -124,7 +125,7 @@ void Controller::executa(int i, MedikamentRepo* repo) {
 		cout << "-Group By Price-\n";
 		cout << "-----descendent\n";
 		repo->groupByPriceD();
-
+		cout << '\n';
 
 
 		break;

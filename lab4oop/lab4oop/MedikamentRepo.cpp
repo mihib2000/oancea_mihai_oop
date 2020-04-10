@@ -9,7 +9,7 @@ MedikamentRepo::MedikamentRepo() {
 
 void MedikamentRepo::showUR()
 {
-	cout << " ISTORIC: " << undo_redo_list.size() << '\n';
+	cout << " ISTORIC: " << undo_redo_list.size() << " elemente in lista istoricului" << '\n';
 	for (int i = 0; i < undo_redo_list.size(); i++)
 	{
 		cout << "-------------------------------------------\n";

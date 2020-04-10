@@ -12,15 +12,17 @@ void UserInterface::start() {
 	Controller c;
 	MedikamentRepo lista;
 
+	/*
 	lista.addMedikament(Medikament("1", 1, 1, 1));
 	lista.addMedikament(Medikament("2", 2, 2, 2));
 	lista.addMedikament(Medikament("3", 3, 3, 3));
+	*/
 
 	int optiune;
 	while (true)
 	{
 		cout << "Meniu Principal" << endl;
-		cout << "0. UR list" << endl;
+		cout << "0. Undo/Redo list" << endl;
 		cout << "1. Adauga Medicament" << endl;
 		cout << "2. Sterge Medicament" << endl;
 		cout << "3. Editeaza Medicament" << endl;

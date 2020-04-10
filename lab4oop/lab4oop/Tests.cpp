@@ -214,6 +214,57 @@ void Test_MedikamentRepo::testUndo2()
 
 };
 
+void Test_MedikamentRepo::testRedo1()
+{
+	//setup
+	MedikamentRepo lista;
+	lista.addMedikament(Medikament("1", 1, 1, 1));
+	lista.addMedikament(Medikament("2", 2, 2, 2));
+	lista.addMedikament(Medikament("3", 3, 3, 3));
+	lista.undo();	// redo va functiona doar daca: 1) ultima modificare a fost un redo sau un undo si 
+												  //2) nu s-a ajuns inca la stadiul initial(inainte de toate undo urile si toate redo urile)!
+
+	// run
+	lista.redo();
+
+	//verify
+	assert(lista.lista.size() == 3);
+
+	assert(lista.lista[2].getName() == "3");
+	assert(lista.lista[2].getKonzentration() == 3);
+	assert(lista.lista[2].getMenge() == 3);
+	assert(lista.lista[2].getPreis() == 3);
+}
+
+void Test_MedikamentRepo::testRedo2()
+{
+	//setup
+	MedikamentRepo lista;
+	lista.addMedikament(Medikament("Paracetamol", 58.6, 40, 5));
+	lista.addMedikament(Medikament("Parasinus", 40, 30, 10));
+	lista.addMedikament(Medikament("Espumisan", 70, 25, 15));
+	lista.undo();
+	lista.undo();
+	lista.undo();
+
+	//run
+	lista.redo();
+	lista.redo();
+
+	//verify
+	assert(lista.lista.size() == 2);
+
+	assert(lista.lista[0].getName() == "Paracetamol");
+	assert(lista.lista[0].getKonzentration() == 58.6);
+	assert(lista.lista[0].getMenge() == 40);
+	assert(lista.lista[0].getPreis() == 5);
+
+	assert(lista.lista[0].getName() == "Parasinus");
+	assert(lista.lista[0].getKonzentration() == 40);
+	assert(lista.lista[0].getMenge() == 30);
+	assert(lista.lista[0].getPreis() == 10);
+};
+
 void testAll()
 {
 	Test_MedikamentRepo::testAddMedikament1();
