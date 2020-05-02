@@ -1,12 +1,14 @@
-// lab4oop.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <vector>
 #include "UserInterface.h"
+#include"Tests.h"
+
+using std::cout;
+
 int main()
 {
+	testAll();
 	UserInterface ui;
-
 	ui.start();
 }
 

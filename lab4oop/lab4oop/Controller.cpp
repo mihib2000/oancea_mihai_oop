@@ -4,9 +4,9 @@ Controller::Controller() {
 
 }
 
-void Controller::executa(int i,MedikamentRepo *repo) {
+void Controller::executa(int i, MedikamentRepo* repo) {
 	//aici o sa se execute comanda cu nr i pe lista de medicamente "lista"
-	string n="";
+	string n = "";
 	float k, p;
 	int m;
 	Medikament* medi;
@@ -14,17 +14,19 @@ void Controller::executa(int i,MedikamentRepo *repo) {
 
 	switch (i) {
 	case 0:
-		cout << "Exiting\n";
+		cout << "-Show history-";
+		repo->showUR();
+
 		break;
+
 	case 1:
-		cout << "-Add Medikament-\n";
 		cout << "Name: "; cin >> n;
 		cout << "Konzentration: "; cin >> k;
 		cout << "Menge: "; cin >> m;
 		cout << "Preis: "; cin >> p;
-		medi =new Medikament(n,k,m,p);
+		medi = new Medikament(n, k, m, p);
 		if (repo->exists(*medi)) {
-			cout <<"Medicamentul exista, se modifica cantitatea! \n" ;
+			cout << "Medicamentul exista, se modifica cantitatea! \n";
 			for (int i = 0; i < repo->lista.size(); i++)
 				if (repo->lista.at(i).getName() == n && repo->lista.at(i).getKonzentration() == k) {
 					repo->lista.at(i).setMenge(m);
@@ -52,7 +54,7 @@ void Controller::executa(int i,MedikamentRepo *repo) {
 		cout << "What Medikament do you want to edit?\n";
 		cout << "Name: "; cin >> n;
 		cout << "Konzentration: "; cin >> k;
-		for (int i = 0; i < repo->lista.size() && breaked==false; i++)
+		for (int i = 0; i < repo->lista.size() && breaked == false; i++)
 			if (repo->lista.at(i).getName() == n && repo->lista.at(i).getKonzentration() == k) {
 				breaked = true;
 				cout << "New Values:\n";
@@ -68,7 +70,7 @@ void Controller::executa(int i,MedikamentRepo *repo) {
 			}
 		break;
 	case 4:
-		
+
 		cout << "-Display Medikament-\n";
 		cout << "Ce sa contina numele medicamentelor? ";   cin >> n;//aici!!!!!
 		repo->showMedikament(n);
@@ -81,6 +83,53 @@ void Controller::executa(int i,MedikamentRepo *repo) {
 		cout << "Optiunea nu exista, va rugam reincercati!\n";
 		break;
 
+
+	case 5:
+
+		float l;
+		cout << "-Show Below-'\n";
+		cout << "Care este pretul-limita?"; cin >> l;
+		repo->showMedikamentBelow(l);
+
+
+
+		break;
+
+	case 7:
+
+		repo->undo();
+
+
+
+		break;
+
+	case 8:
+
+		repo->redo();
+
+
+
+		break;
+
+	case 9:
+		cout << "-Group By Price-\n";
+		cout << "-----ascendent\n";
+		repo->groupByPriceA();
+		cout << '\n';
+
+
+
+		break;
+
+	case 10:
+		cout << "-Group By Price-\n";
+		cout << "-----descendent\n";
+		repo->groupByPriceD();
+		cout << '\n';
+
+
+		break;
+
 	}
-		
+
 }

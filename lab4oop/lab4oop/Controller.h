@@ -6,7 +6,14 @@
 class Controller
 {
 public:
+	/*
+		Constructor
+	*/
 	Controller();
-	void executa(int i, MedikamentRepo *repo);
+	
+	/*
+		
+	*/
+	void executa(int i, MedikamentRepo* repo);
 };
 
