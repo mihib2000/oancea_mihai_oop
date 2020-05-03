@@ -114,7 +114,7 @@ void Repository::add(Movie m)
 void Repository::del(string id)
 {
 	int poz = exists(id);
-	if (poz != -1) list.erase(list.begin() + poz);
+	if (poz != -1) { list.erase(list.begin() + poz); cout << " l a sters\n";} 
 	else
 	{
 		exception not_here("The movie does not exist!");
@@ -122,6 +122,7 @@ void Repository::del(string id)
 
 	}
 }
+
 
 void Repository::edit(string old_id, Movie new_m)
 {
@@ -165,3 +166,5 @@ vector<Movie> Repository::generateUserGenreList(string genre)
 	}
 	return preference_list;
 }
+
+vector<Movie>& Repository::getList() { return list; }

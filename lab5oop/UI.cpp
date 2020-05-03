@@ -220,7 +220,6 @@ void UI::execute_amo()
 	int option;
 	while (true)
 	{
-		cout << "revineeeeeeeeeeeeeee11111\n";
 		admin_menu_screen();
 		ask_get("option", option);
 		switch (option)
@@ -247,7 +246,6 @@ void UI::execute_amo()
 				ask_get("id (of movie to be replaced)", old_id);
 				ask_get_ma(id, title, genre, year, likes, trailer);
 				validation_screen(year, likes);
-				cout << "acilea2222\n";
 				try
 				{
 					contr.getRepo().edit(old_id, Movie(id, title, genre, year, likes, trailer));
@@ -281,7 +279,7 @@ void UI::execute_amo()
 			}
 			case 0:
 			{
-				clear();
+				// clear();
 				go_back_screen();
 				return;
 			}
@@ -356,7 +354,7 @@ void UI::execute_umo(vector<Movie>& own_list)
 				cout << "Please check file database so that you do not misspell any genre!\n"
 					<< " Any genre shall be typed in precisely as in the database!\n";
 				string genre;
-				cout << "(leave blank to view all movie trailers)\n";
+				cout << " (leave blank to view all movie trailers)\n";
 				ask_get("genre", genre);
 				vector<Movie> aux = contr.getRepo().generateUserGenreList(genre);
 
@@ -366,16 +364,19 @@ void UI::execute_umo(vector<Movie>& own_list)
 			}
 			case 2:
 			{
+				afis_lista(own_list);
+				if (!own_list.size()) break;
+				
 				string id;
-				if (!own_list.size()) { cout << "Your watchlist is empty at the moment!\n"; break; }
-
 				ask_get("id (of movie to be deleted)", id);
 				try
 				{
 					contr.getRepo().del(id);
 
 					char c;
-					ask_get("option", c);
+					cout << "Did you enjoy the movie?\n";
+					ask_get("(\"y\" = yes / \"n\" = no / \"e\" = exit)\n\
+						option", c);
 					switch (c)
 					{
 					case 'y':
@@ -402,7 +403,7 @@ void UI::execute_umo(vector<Movie>& own_list)
 			}
 			case 0:
 			{
-				clear();
+				// clear();
 				go_back_screen();
 				return;
 			}
@@ -447,4 +448,4 @@ void UI::success_msg(const string& state)
 	cout << "Movie successfully " << state << " inside of virtual database!\n";
 }
 
-void UI::clear(){ cout << "\x1B[2J\x1B[H"; }
+// void UI::clear(){ cout << "\x1B[2J\x1B[H"; }

@@ -24,15 +24,13 @@ private:
 
 	 /* Method that reads */
 	 vector<Movie> read_database(string file = "Movies.txt");
-	 	 
-	 // int exists(string id); // de asta am nevoie !
 
-
-
-//	 static Repository* getInstance();
-	// Repository() {};
-
-
+	 static void del_watchlist(string); 
+	 /*
+		 am implementat o statica pentru ca va
+		 folosita atat de obiecte ale clasei, cat si pentru a sterge
+		 din watchlist ul temporar al user ului
+	 */
 
 public:
 	

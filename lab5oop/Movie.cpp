@@ -33,5 +33,6 @@ bool operator==(const Movie& lhs, const Movie& rhs)
 ostream& operator<<(ostream& os, const Movie& m) // o referinta la un stream pentru ca modific streamul
 {
 	os << "id = " << m.getID() <<"; \"" << m.getTitle() << "\" " << m.getGenre() << " " << m.getYear() << " " << m.getLikes();
+	// am ales intentionat sa nu afisam si link ul URL
 	return os;
 }
