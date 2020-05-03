@@ -20,10 +20,8 @@ private:
 
 public:
 	/* Constructor */
-	Movie(string = "-1",
-		string = "N/A", string = "N/A", int = -1,
-		int = -1, string = "N/A"); // vad ca pot sa nu specific un nume
-	// pt parametrii si tot sa mearga
+	Movie(string = "-1", string = "N/A", string = "N/A", int = -1, int = -1, string = "N/A");
+	
 	
 	/* getters & setters for all attributes*/
 

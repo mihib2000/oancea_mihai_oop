@@ -1,3 +1,9 @@
+/*
+	NOTA: pentru deschiderea link urilor in browser am folosit o varianta
+	care nu stiu daca e cross-platform, dar pe windows mergea! Nu stiu sigur 
+	pe MacOS sau alte sisteme de operare
+*/
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -23,20 +29,25 @@ using std::vector;
 /*
 	reads a file & returns a stream with the contents of a file
 */
+/*
 ifstream get_input(string file)
 {
 	string mat;
 	ifstream input_stream;
-	input_stream.open(file);
-	try
+	while (true)
 	{
-		return input_stream;
-	}
-	catch (...)
-	{
-		cout << "eroare la deschiderea fisierului\n";
+		try
+		{
+			input_stream.open(file);
+			return input_stream;
+		}
+		catch (...)
+		{
+			asl_get("file", file);
+		}
 	}
 }
+*/
 
 /*
 	Parse one line (pertaining to our database); turn read contents into meaningful variables.
@@ -99,28 +110,45 @@ vector<Movie>parse_input(ifstream file)
 /*
 	read & parse & return movie database
 */
+/*
 vector<Movie> create_list(string file)
 {
 	return parse_input(get_input(file));
 }
-
+*/
 /*
 	Create the layers of the app.
 */
 void start()
 {
-	vector<Movie> lista = create_list("Movies.txt");	
-	Repository repo = Repository(lista);
+	//vector<Movie> lista = create_list("Movies.txt");	
+	//Repository repo = Repository(lista);
 
+	Repository repo("Movies.txt");
 	Controller ctrl(repo);
 	UI ui(ctrl);
 
-	ui.start();
+	ui.run();
 }
 
 int main()
 {	
-	 start();
+	// start();
+	
+	
+	/*
+	string s1 = "ab";
+	string s2 = "abc";
+	if (s1 < s2) cout << "da\n";
+	if (s2 < s1) cout << "s2 mai mare\n";
+	*/
+	
+	/*
+	ifstream file;
+	if(file.open()) cout << "returneaza true pt ca s a deschis fisierul\n";
+	*/
+
+	start();
 
 	return 0;
 }
