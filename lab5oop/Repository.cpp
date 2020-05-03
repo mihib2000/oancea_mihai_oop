@@ -111,7 +111,7 @@ void Repository::add(Movie m)
 	}
 }
 
-void Repository::del(string id)
+void Repository::del(string id) // cred ca oricum vine prin refereinta
 {
 	int poz = exists(id);
 	if (poz != -1) { list.erase(list.begin() + poz); cout << " l a sters\n";} 

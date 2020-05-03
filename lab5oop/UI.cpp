@@ -131,6 +131,7 @@ void UI::invalid_screen(const string& token)
 		<< token.c_str();
 }
 
+
 void UI::validation_screen(int& year, int& likes)
 {
 	cout << "Checking integrity of data...\n";
@@ -371,20 +372,32 @@ void UI::execute_umo(vector<Movie>& own_list)
 				ask_get("id (of movie to be deleted)", id);
 				try
 				{
-					contr.getRepo().del(id);
 
+					int l = own_list.size();
+					for (int i = 0; i < l; i++)
+					{
+						if (own_list.at(i).getID() == id)
+						{
+							own_list.erase(own_list.begin() + i); 
+							break;
+						}
+					}
+	
 					char c;
-					cout << "Did you enjoy the movie?\n";
-					ask_get("(\"y\" = yes / \"n\" = no / \"e\" = exit)\n\
-						option", c);
+					cout << "Did you enjoy the movie?(answering yes will increment the number of likes for that movie)\n";
+					ask_get("(\"y\" = yes / \"n\" = no / \"e\" = exit)\n option",c);
 					switch (c)
 					{
 					case 'y':
 					{
 						int poz = contr.getRepo().exists(id);
-						vector<Movie> aux = contr.getRepo().getList(); // asta e chiar baza mea de date, pentru ca metoda returneaza referinta ! nu e o copie!
-						int nr_likes = aux.at(poz).getLikes();
-						aux.at(poz).setLikes(++nr_likes); // incrementez numarul de like uri
+
+						vector<Movie>& list = contr.getRepo().getList();
+
+						int nr_likes = list.at(poz).getLikes();
+						list.at(poz).setLikes(++nr_likes); // incrementez numarul de like uri
+						
+						cout << "Number of likes successfully incremented\n";
 					}
 					case 'n': break;
 					}

@@ -4,7 +4,7 @@
 4, The Dark Knight, Drama, 2008, 90, https://www.imdb.com/video/vi324468761?playlistId=tt0468569&ref_=tt_ov_vi
 5, 12 Angry Men, Drama, 1957, 89, https://www.imdb.com/video/vi3452609817?playlistId=tt0050083&ref_=tt_ov_vi
 6, Schindler's List, Biography Drama History, 1993, 89, https://www.imdb.com/video/vi1158527769?playlistId=tt0108052&ref_=tt_ov_vi
-7, The Lord of the Rings: The Return of the King, Adventure Drama Fantasy, 2003, 89, https://www.imdb.com/video/vi2073101337?playlistId=tt0167260&ref_=tt_ov_vi
+7, The Lord of the Rings: The Return of the King, Adventure Drama Fantasy, 2003, 90, https://www.imdb.com/video/vi2073101337?playlistId=tt0167260&ref_=tt_ov_vi
 8, Pulp Fiction, Crime Drama, 1994, 89, https://www.imdb.com/video/vi2620371481?playlistId=tt0110912&ref_=tt_ov_vi
 9, The Good the Bad and the Ugly, Western, 1966, 88, https://www.imdb.com/video/vi2789278233?playlistId=tt0060196&ref_=tt_ov_vi
 10, The Lord of the Rings: The Fellowship of the Ring, Action Adventure Drama Fantasy, 2001, 88, https://www.imdb.com/video/vi2073101337?playlistId=tt0120737&ref_=tt_ov_vi
