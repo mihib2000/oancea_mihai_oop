@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="Tests.h" />
     <ClInclude Include="Movie.h" />
     <ClInclude Include="Repository.h" />
     <ClInclude Include="UI.h" />

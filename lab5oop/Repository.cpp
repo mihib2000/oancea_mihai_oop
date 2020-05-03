@@ -12,30 +12,11 @@ using std::ifstream;
 using std::getline;
 using std::exception;
 
-/*
-Repository::Repository(vector<Movie> lista) // :  list(lista)
-{
-	if (!lista.size()) lista = read_database();
-	else list = lista;
-}
-*/
-/*
-Repository::Repository(vector<Movie> lista) : list(lista)
-{}
-*/
-
-/*
-Repository::Repository()
-{
-	list = read_database();
-}
-*/
 
 Repository::Repository(string file) : list(read_database(file))
 {}
 
 
-//////////////////////////////////////////////////////////////////////////////////////
 ifstream Repository::get_input(string file)
 {
 	string mat;
@@ -53,9 +34,6 @@ vector<string> Repository::getIds()
 	return aux;
 }
 
-/*
-	Parse one line (pertaining to our database); turn read contents into meaningful variables.
-*/
 void Repository::parse_line(string line, string& id, string& title, string& genre, int& year, int& likes, string& trailer)
 {
 	std::stringstream stream; // creez un stream
@@ -63,8 +41,6 @@ void Repository::parse_line(string line, string& id, string& title, string& genr
 
 	string token;
 	getline(stream, token, ',');
-	//std::stringstream aux(token);	// convertesc la int
-	//aux >> id;
 	id = token; // nu am niciun spatiu de eliminat aici
 
 	getline(stream, token, ',');
@@ -76,21 +52,19 @@ void Repository::parse_line(string line, string& id, string& title, string& genr
 
 	getline(stream, token, ',');
 	token = token.substr(1);	// elimin space ul de la inceputul string ului
-	std::stringstream aux2(token);	// convertesc la int
-	aux2 >> year;
+	std::stringstream aux2(token);	// convertesc un string
+	aux2 >> year;					// la un int 
 
 	getline(stream, token, ',');	// convertesc la int
 	token = token.substr(1);	// elimin space ul de la inceputul string ului
-	std::stringstream aux3(token);
-	aux3 >> likes;
+	std::stringstream aux3(token);	// convertesc un string
+	aux3 >> likes;					// la un int
 
 	getline(stream, token, ',');
 	token = token.substr(1);
 	trailer = token;
 }
-/*
-	Parse the contents read from the file (pertaining to our database)
-*/
+
 vector<Movie> Repository::parse_input(ifstream file)
 {
 	string id;
@@ -111,17 +85,11 @@ vector<Movie> Repository::parse_input(ifstream file)
 
 	return lista;
 }
-/*
-	read & parse & return movie database
-*/
-//vector<Movie> create_list()
+
 vector<Movie> Repository::read_database(string file)
 {
 	return parse_input(get_input(file));
 }
-///////////////////////////////////////////////////////////////////////////////////
-
-vector<Movie>& Repository::getList() { return list; } // ar trebui sa returneze poitner ? sau referinta?
 
 int Repository::exists(string id)
 {

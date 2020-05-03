@@ -9,7 +9,6 @@ class Movie
 {
 private:
 
-	//int id;
 	string id;
 
 	string title;
@@ -19,6 +18,7 @@ private:
 	string trailer; // trailer link
 
 public:
+
 	/* Constructor */
 	Movie(string = "-1", string = "N/A", string = "N/A", int = -1, int = -1, string = "N/A");
 	
