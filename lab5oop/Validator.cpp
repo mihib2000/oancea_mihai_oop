@@ -8,12 +8,17 @@
 
 using std::istream;
 
-bool Validator::validate_id(const string &id, vector<string> ids_list)
+bool Validator::id_exists(const string &id, const vector<string> & ids_list)
 {
 	int l = ids_list.size();
 	for (int i = 0; i < l; i++)
 		if (id == ids_list[i]) return false;
 	return true;
+}
+
+bool Validator::id_does_not_exist(const string& id, const vector<string> & ids_list)
+{
+	return(!id_exists(id, ids_list));
 }
 
 bool Validator::validate_year(const int &year)

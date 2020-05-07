@@ -3,8 +3,8 @@
 
 using std::string;
 
-Movie::Movie(string id, string title, string genre, int year, int likes, string trailer) :id{ id }, title{ title }, genre{ genre }, year{ year }, likes{likes},
-trailer{trailer}
+Movie::Movie(string id, string title, string genre, int year, int likes, string trailer) :id{ id }, title{ title }, genre{ genre }, year{ year }, likes{ likes },
+trailer{ trailer }
 {}
 
 string Movie::getID() const { return id; }
@@ -32,7 +32,7 @@ bool operator==(const Movie& lhs, const Movie& rhs)
 
 ostream& operator<<(ostream& os, const Movie& m) // o referinta la un stream pentru ca modific streamul
 {
-	os << "id = " << m.getID() <<"; \"" << m.getTitle() << "\" " << m.getGenre() << " " << m.getYear() << " " << m.getLikes();
+	os << "id = " << m.getID() << "; \"" << m.getTitle() << "\" " << m.getGenre() << " " << m.getYear() << " " << m.getLikes();
 	// am ales intentionat sa nu afisam si link ul URL
 	return os;
 }

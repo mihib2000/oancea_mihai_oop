@@ -1,37 +1,30 @@
-#include "Repository.h"
-
 #include<iostream> // vad ca merge si fara asta
 #include<fstream> // vad ca merge si fara asta
 #include <exception>
 #include <sstream>
 
+#include "Repository.h"
 
 using std::cin;
 using std::cout;
-using std::ifstream;
 using std::getline;
+using std::ifstream;
 using std::exception;
 
-
-Repository::Repository(string file) : list(read_database(file))
+Repository::Repository(string database_file, string watchlist_file) :
+	list(read_database(database_file)), user_watchlist(read_database(watchlist_file))
 {}
 
+vector<Movie>& Repository::getList() { return list; }
+
+vector<Movie>& Repository::getUserWatchlist() { return user_watchlist; }
 
 ifstream Repository::get_input(string file)
 {
-	string mat;
 	ifstream input_stream;
-	input_stream.open(file);
+	input_stream.open(file); // va arunca oricum exceptie aici daca nu exista fisierul, iar o exceptie netratata
+	// ( uncaught ) va opri executia programului
 	return input_stream;
-}
-
-vector<string> Repository::getIds()
-{
-	vector<string> aux;
-	int l = list.size();
-	for (int i = 0; i < l; i++)
-		aux.push_back(list[i].getID());
-	return aux;
 }
 
 void Repository::parse_line(string line, string& id, string& title, string& genre, int& year, int& likes, string& trailer)
@@ -88,65 +81,77 @@ vector<Movie> Repository::parse_input(ifstream file)
 
 vector<Movie> Repository::read_database(string file)
 {
+	if (file == "") return vector<Movie>();
 	return parse_input(get_input(file));
 }
 
-int Repository::exists(string id)
+vector<string> Repository::getIds()
+{
+	vector<string> aux;
+	int l = list.size();
+	for (int i = 0; i < l; i++)
+		aux.push_back(list[i].getID());
+	return aux;
+}
+
+/*
+vector<Movie> & Repository::get_ref(const int &option)
+{
+	switch (option)
+	{
+	case 1:
+		return list;
+	case 2:
+		return user_watchlist;
+	}
+}
+*/
+
+int Repository::exists(const vector<Movie>& list, const string& id) // database or watchlist
 {
 	int l = list.size();
 	for (int i = 0; i < l; i++)
-	{
-		if (list.at(i).getID() == id)  return i; // sau Movie == Movie
-	}
+		if (list.at(i).getID() == id)  return i;
+
 	return -1;
 }
 
-void Repository::add(Movie m)
+void Repository::add(vector<Movie>& list, const Movie& m)
 {
-	if (exists(m.getID()) == -1) list.push_back(m);
+	if (exists(list, m.getID()) == -1) list.push_back(m);
 	else
 	{
-		exception already_exists("The movie already exists");
+		exception already_exists("The movie already exists in the respective list!");
 		throw already_exists;
 	}
 }
 
-void Repository::del(string id) // cred ca oricum vine prin refereinta
+void Repository::del(vector<Movie>& list, const string& id) // cred ca oricum vine prin refereinta
 {
-	int poz = exists(id);
-	if (poz != -1) { list.erase(list.begin() + poz); cout << " l a sters\n";} 
+	int poz = exists(list, id);
+	if (poz != -1) list.erase(list.begin() + poz);
 	else
 	{
-		exception not_here("The movie does not exist!");
+		exception not_here("The movie does not exist in the respective list!");
 		throw not_here;
-
 	}
 }
 
-
-void Repository::edit(string old_id, Movie new_m)
+void Repository::edit(vector<Movie>& list, const string& id, const Movie& new_movie)
 {
-	int poz = exists(old_id);
-	if (poz != -1) { list.at(poz) == new_m; }
+	int poz = exists(list, id);
+	if (poz != -1)
+		list[poz] = new_movie;
 	else
 	{
-		exception nu_exista("The movie does not exist!");
+		exception nu_exista("The movie does not exist in the respective list!");
 		throw nu_exista;
 	}
 }
 
-
-void Repository::toString()
+vector<Movie> Repository::generateUserWatchlist(const string& genre)
 {
-	int l = list.size();
-	for (int i = 0; i < l; i++)
-		cout << i + 1 << ". " << list[i] << '\n';
-	cout << '\n';
-}
-
-vector<Movie> Repository::generateUserGenreList(string genre)
-{
-	if (genre == "") return list; 
+	if (genre == "") return list;
 
 	vector<Movie> preference_list;
 	int l = list.size();
@@ -154,17 +159,23 @@ vector<Movie> Repository::generateUserGenreList(string genre)
 	{
 		string token;
 		std::stringstream stream;
-		stream << list[i].getGenre(); 
-		while (getline(stream, token, ' ' ))
+		stream << list[i].getGenre();
+		while (getline(stream, token, ' '))
 		{
 			if (token == genre)
 			{
 				preference_list.push_back(list[i]);
 				break;
-			}				
+			}
 		}
 	}
 	return preference_list;
 }
 
-vector<Movie>& Repository::getList() { return list; }
+ostream& operator<<(ostream& os, const vector<Movie>& list)
+{
+	int l = list.size();
+	for (int i = 0; i < l; i++)
+		os << i + 1 << ". " << list[i] << '\n';
+	return os;
+}

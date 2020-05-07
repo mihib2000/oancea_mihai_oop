@@ -13,17 +13,21 @@ private:
 public:
 
 	const int lowest_likes = 0;
+
 	const int lowest_year = 1887;
 	const int highest_year = 2020;
 
 	/* Validate logical value of id */
-	bool validate_id(const string&, vector<string>);
+	bool id_exists(const string&, const vector<string>&);
+
+	/* Validate logical value of id */
+	bool id_does_not_exist(const string&, const vector<string>&);
 
 	/* Validate logical value of likes*/
-	bool validate_likes(const int &); // nu validez tipul, validez logica !!
-	
+	bool validate_likes(const int&); // nu validez tipul, validez logica !!
+
 	/* Validate logical value of year */
-	bool validate_year(const int &);
+	bool validate_year(const int&);
 
 	/* Validate logical value of trailer */
 	bool validate_trailer(const string&);

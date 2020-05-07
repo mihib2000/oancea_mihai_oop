@@ -10,4 +10,4 @@
 10, The Lord of the Rings: The Fellowship of the Ring, Action Adventure Drama Fantasy, 2001, 88, https://www.imdb.com/video/vi2073101337?playlistId=tt0120737&ref_=tt_ov_vi
 11, Fight Club, Drama, 1999, 88, https://www.imdb.com/video/vi781228825?playlistId=tt0137523&ref_=tt_ov_vi
 12, Forrest Gump, Drama Romance, 1994, 88, https://www.imdb.com/video/vi3567517977?playlistId=tt0109830&ref_=tt_ov_vi
-13, Miracle in Cell No.7, Drama, 2020, 93, https://www.imdb.com/video/vi3877612057?playlistId=tt0111161&ref_=tt_ov_vi
+13, Miracle in Cell No.7, Drama, 2020, 93, www.imdb.com/video/vi3877612057?playlistId=tt0111161&ref_=tt_ov_vi

@@ -21,8 +21,8 @@ public:
 
 	/* Constructor */
 	Movie(string = "-1", string = "N/A", string = "N/A", int = -1, int = -1, string = "N/A");
-	
-	
+
+
 	/* getters & setters for all attributes*/
 
 	string getID() const;
@@ -30,16 +30,16 @@ public:
 
 	string getTitle() const;
 	void setTitle(string);
-	
+
 	string getGenre() const;
 	void setGenre(string);
-	
+
 	int getYear() const;
 	void setYear(int);
-	
+
 	int getLikes() const;
 	void setLikes(int);
-	
+
 	string getTrailer() const;
 	void setTrailer(string);
 };
