@@ -237,21 +237,19 @@ void UI::execute_amo()
 			afis_lista(list);
 			ask_get("id (of movie to be updated)", old_id);
 			id_validation_screen(old_id, 2);
-			// validez intai sa existe id ul !!					///////////////////////////////////////////////////////////////////////////////////////////////////////
+			// validez intai sa existe id ul !!
 
 			int poz = contr.getRepo().exists(list, old_id);
 			contr.getRepo().del(list, old_id); // sterg din baza de date filmul precedent
 
-			ask_get_ma(id, title, genre, year, likes, trailer);
+			ask_get_ma(id, title, genre, year, likes, trailer); // iau de la utilizator atributele noului film
 
 			year_validation_screen(year);
 			likes_validation_screen(likes);
 
 			Movie new_movie(id, title, genre, year, likes, trailer);
 
-			list.insert(list.begin() + poz, new_movie);
-
-			//contr.getRepo().edit(list, );
+			list.insert(list.begin() + poz, new_movie); // si inserez noul film
 
 			afis_lista(list);
 			break;
@@ -273,7 +271,6 @@ void UI::execute_amo()
 		}
 		case 4:
 		{
-			//cout << list << '\n';
 			afis_lista(list);
 			break;
 		}
@@ -334,7 +331,6 @@ void UI::one_by_one_screen()
 			try
 			{
 				contr.getRepo().add(watchlist, genre_list[i]);
-				//contr.getRepo().add(genre_list[i], 2);
 			}
 			catch (exception& e)
 			{
