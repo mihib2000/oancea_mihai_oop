@@ -1,3 +1,8 @@
+/*
+Nota: Daca nu functioneaza deschiderea url urilor, incercati asta:
+	Project -> `lab5 Properties...` -> Configuration Properties -> Advanced
+	iar apoi, setati campul "Multi Set" la " Use Multi Byte Character Set"
+*/
 #include <iostream>
 #include <fstream>
 #include <sstream>
